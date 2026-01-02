@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>EduPortal</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', sans-serif;
+      background: #f4f7fb;
+      color: #2c3e50;
+    }
+
+    /* Sticky Header */
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      background: #003366;
+      color: white;
+      padding: 15px 20px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .header-title {
+      font-size: 1.5rem;
+      font-weight: bold;
+      animation: blinkZoom 1.5s infinite;
+      flex: 1;
+      text-align: center;
+    }
+
+    .header-btn {
+      border-radius: 12px;
+      padding: 10px 16px;
+      border: none;
+      background-color: #0074cc;
+      color: white;
+      font-weight: 600;
+      cursor: pointer;
+      min-width: 90px;
+    }
+
+    @keyframes blinkZoom {
+      0% {opacity: 1; transform: scale(1);}
+      50% {opacity: 0.85; transform: scale(1.05);}
+      100% {opacity: 1; transform: scale(1);}
+    }
+
+    .modal {
+      display: none;
+      position: fixed;
+      z-index: 2000;
+      left: 0; top: 0;
+      width: 100%; height: 100%;
+      background: rgba(0,0,0,0.6);
+      justify-content: center;
+      align-items: center;
+    }
+
+    .modal-content {
+      background: white;
+      padding: 20px;
+      border-radius: 12px;
+      width: 80%;
+      max-width: 500px;
+    }
+
+    .content {
+      padding: 20px;
+    }
+
+    .card {
+      background: white;
+      margin: 10px 0;
+      padding: 15px;
+      border-radius: 12px;
+      box-shadow: 0 1px 5px rgba(0,0,0,0.08);
+    }
+
+    .three-column {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 20px;
+    }
+
+    .grid-four {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 20px;
+    }
+
+    .slider {
+      overflow-x: auto;
+      white-space: nowrap;
+      padding: 10px 0;
+    }
+
+    .slider div {
+      display: inline-block;
+      background: white;
+      margin-right: 10px;
+      padding: 20px;
+      border-radius: 12px;
+      width: 200px;
+      height: 150px;
+      vertical-align: top;
+      text-align: center;
+      box-shadow: 0 1px 4px rgba(0,0,0,0.1);
+    }
+
+    .slider div:hover {
+      transform: scale(1.03);
+      transition: transform 0.3s;
+    }
+
+    footer {
+      position: sticky;
+      bottom: 0;
+      background: #003366;
+      display: flex;
+      justify-content: space-around;
+      padding: 10px 0;
+      box-shadow: 0 -2px 5px rgba(0,0,0,0.1);
+    }
+
+    footer button {
+      border: none;
+      background: #0074cc;
+      color: white;
+      padding: 12px 20px;
+      border-radius: 12px;
+      font-size: 16px;
+      font-weight: 600;
+      cursor: pointer;
+    }
+
+    button:hover {
+      background-color: #005ea3;
+    }
+
+    a {
+      color: #003366;
+      text-decoration: none;
+    }
+
+    a:hover {
+      text-decoration: underline;
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <button class="header-btn">Register</button>
+    <div class="header-title">Welcome to Eduportal</div>
+    <button class="header-btn" onclick="openModal()">Search</button>
+  </header>
+
+  <div class="modal" id="searchModal">
+    <div class="modal-content">
+      <h3>Search Results</h3>
+      <p><a href="#">Policy Overview</a></p>
+      <p><a href="#">Student Resources</a></p>
+      <p><a href="#">Educator Tools</a></p>
+      <button class="header-btn" onclick="closeModal()">Close</button>
+    </div>
+  </div>
+
+  <div class="content">
+    <h2>Educational Highlights</h2>
+    <div class="three-column">
+      <div class="card"><h3>Curriculum Reform</h3><div>Image Placeholder</div><p>Recent updates to the national curriculum standards.</p><button class="header-btn">Explore</button></div>
+      <div class="card"><h3>Technology in Schools</h3><div>Image Placeholder</div><p>How digital tools are transforming classrooms.</p><button class="header-btn">Explore</button></div>
+      <div class="card"><h3>Funding Programs</h3><div>Image Placeholder</div><p>Details on government-sponsored educational grants.</p><button class="header-btn">Explore</button></div>
+    </div>
+
+    <h2>Quick Access</h2>
+    <div class="grid-four">
+      <div class="card"><h4>Admissions</h4><p>ðŸ”— Apply Now</p><p>Information about application deadlines and requirements.</p></div>
+      <div class="card"><h4>Resources</h4><p>ðŸ”— Digital Library</p><p>Access books, articles, and multimedia for all levels.</p></div>
+      <div class="card"><h4>Teacher Tools</h4><p>ðŸ”— Training Portal</p><p>Courses and certifications for educators.</p></div>
+      <div class="card"><h4>Parent Info</h4><p>ðŸ”— FAQs</p><p>Guidance for parents on student success.</p></div>
+    </div>
+
+    <h2>Media & Learning</h2>
+    <div class="slider">
+      <div>Photo Archive</div>
+      <div>Video Lessons</div>
+      <div>EduPortal Access</div>
+      <div>Interactive Tools</div>
+    </div>
+  </div>
+
+  <footer>
+    <button>Profile</button>
+    <button>Home</button>
+    <button>Explore</button>
+    <button>Logout</button>
+  </footer>
+
+  <script>
+    function openModal() {
+      document.getElementById('searchModal').style.display = 'flex';
+    }
+    function closeModal() {
+      document.getElementById('searchModal').style.display = 'none';
+    }
+  </script>
+</body>
+</html>

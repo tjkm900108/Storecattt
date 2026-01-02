@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<nav>
+<strong>StoreCat</strong>
+<button onclick="openAuth()">Login</button>
+</nav>
+
+<section class="cards">
+  <div class="store-card"><h3>Shoprite</h3><a href="stores/shoprite.html"><button>Open</button></a></div>
+  <div class="store-card"><h3>Pick n Pay</h3><a href="stores/picknpay.html"><button>Open</button></a></div>
+  <div class="store-card"><h3>Checkers</h3><a href="stores/checkers.html"><button>Open</button></a></div>
+  <div class="store-card"><h3>SPAR</h3><a href="stores/spar.html"><button>Open</button></a></div>
+</section>
+
+<div id="auth" class="modal">
+<div class="modal-content">
+<h3>Login</h3>
+<input placeholder="Phone number"><br><br>
+<input type="password" placeholder="Password"><br><br>
+<button>Login</button>
+<button onclick="closeAuth()">Close</button>
+</div>
+</div>
+
+<script>
+function openAuth(){auth.style.display="flex"}
+function closeAuth(){auth.style.display="none"}
+</script>
+
+<footer>Smart Retail Discovery for South Africa</footer>
+</body>
+</html>

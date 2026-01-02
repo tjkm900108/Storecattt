@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Admin Dashboard</title>
+<link rel="stylesheet" href="css/style.css">
+
+<script src="https://unpkg.com/@zxing/library@latest"></script>
+<script src="js/admin.js" defer></script>
+</head>
+
+<body>
+
+<nav>
+<strong>Admin Dashboard</strong>
+<a href="landing.html">Back</a>
+</nav>
+
+<main>
+
+<h3>Add Product</h3>
+
+<input id="store" placeholder="Store (shoprite)" required>
+<input id="category" placeholder="Category (groceries)">
+<input id="name" placeholder="Product name" required>
+
+<input id="barcode" placeholder="Barcode / QR code" required>
+<button onclick="startScan()">📷 Scan Barcode / QR</button>
+
+<input type="file" accept="image/*" capture="environment" id="image">
+
+<textarea id="insight" placeholder="Product insights / description"></textarea>
+
+<button onclick="addProduct()">Save Product</button>
+
+<hr>
+
+<h3>Saved Products</h3>
+<div id="list"></div>
+
+<div id="scanner" style="display:none"></div>
+
+</main>
+
+</body>
+</html>

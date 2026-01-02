@@ -1,0 +1,341 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EduPortal</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+        
+        header {
+            background-color: #4CAF50;
+            color: white;
+            padding: 20px;
+            text-align: center;
+        }
+        
+        nav {
+            display: flex;
+            align-items: center;
+            background-color: #333;
+            padding: 10px;
+        }
+        
+        menu-button {
+      cursor: pointer;
+      padding: 5px;
+      background-color: #555;
+      color: white;
+      border: none;
+      font-size: 18px;
+    }
+    .menu-button:hover {
+      background-color: #777;
+    }
+    .dropdown-menu {
+      display: none; /* Menu is completely hidden initially */
+      position: fixed;
+      top: 0;
+      right: 0;
+      width: 50%;
+      height: 100%;
+      background-color: #f9f9f9;
+      box-shadow: -5px 0 10px rgba(0, 0, 0, 0.3);
+      overflow-y: auto;
+      z-index: 1000;
+      padding: 20px;
+    }
+    .dropdown-menu a {
+      display: block;
+      color: black;
+      text-decoration: none;
+      padding: 10px;
+      font-size: 18px;
+    }
+    .dropdown-menu a:hover {
+      background-color: #ddd;
+    }
+    .close-button {
+      background-color: #333;
+      color: white;
+      border: none;
+      font-size: 18px;
+      padding: 10px;
+      cursor: pointer;
+      position: absolute;
+      top: 10px;
+      right: 10px;
+    }
+    .close-button:hover {
+      background-color: #555;
+    }
+        
+        .search-container {
+            margin-left: 20px;
+        }
+        
+        .search-input {
+            padding: 10px;
+            font-size: 16px;
+            border: none;
+            border-radius: 5px 0 0 5px;
+        }
+        
+        .search-button {
+            padding: 10px;
+            font-size: 16px;
+            border: none;
+            border-radius: 0 5px 5px 0;
+            cursor: pointer;
+            background-color: #4CAF50;
+            color: white;
+        }
+        
+        .video-slider {
+            display: flex;
+            overflow-x: auto;
+            gap: 20px;
+            padding: 10px;
+            background-color: #f0f0f0;
+            scroll-behavior: smooth;
+        }
+        
+        .slide {
+            width: 250px;
+            height: 150px;
+            flex-shrink: 0;
+            margin: 10px;
+            cursor: pointer;
+            position: relative;
+        }
+        
+        .slide img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        
+        .slide h3 {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            background-color: rgba(0, 0, 0, 0.5);
+            color: white;
+            padding: 10px;
+            text-align: center;
+        }
+        
+        .video-grid, .institutions-grid, .books-grid, .learners-support-grid {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+            padding: 20px;
+        }
+        
+        .video-item, .institution-item, .book-item, .support-item {
+            background-color: #fff;
+            border: 1px solid #ccc;
+            padding: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+        
+        .video-item img, .institution-item img, .book-item img, .support-item img {
+            width: 100%;
+            height: 150px;
+            object-fit: cover;
+        }
+        
+        .video-item h3, .institution-item h3, .book-item h3, .support-item h3 {
+            margin-top: 10px;
+        }
+        
+        .video-item button, .institution-item button, .book-item button, .support-item button {
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px 20px;
+            border
+Here is the rest of the code:
+
+        .video-item button:hover, .institution-item button:hover, .book-item button:hover, .support-item button:hover {
+            background-color: #3e8e41;
+        }
+        
+         /* Mega Footer */
+    footer {
+      background-color: #333;
+      color: white;
+      padding: 20px;
+      text-align: center;
+    }
+    .footer-subscription input {
+      padding: 10px;
+      width: 60%;
+      margin: 10px 0;
+      border: none;
+    }
+    .footer-social-icons a {
+      margin: 0 10px;
+      color: white;
+      font-size: 20px;
+      text-decoration: none;
+    }
+    /* Responsive Design */
+    @media (max-width: 600px) {
+      .video-slider video {
+        width: 100%;
+      }
+      .search-bar input {
+        width: 90%;
+      }
+      .dropdown-menu {
+        width: 70%;
+      }
+    }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Welcome to EduPortal</h1>
+    </header>
+    <nav>
+        <button class="menu-button" onclick="showMenu()">☰</button>
+        <div class="search-container">
+            <input type="text" id="search-input" class="search-input" placeholder="Search...">
+            <button class="search-button" onclick="searchPage()">Search</button>
+        </div>
+    </nav>
+    <div id="dropdownMenu" class="dropdown-menu">
+        <button class="close-button" onclick="hideMenu()">✖</button>
+        <a href="#home">Home</a>
+        <a href="#about">About</a>
+        <a href="#contact">Contact</a>
+    </div>
+    <div class="video-slider">
+        <div class="slide" onclick="location.href='#video-grid';">
+            <img src="video-thumbnail.jpg" alt="Video Thumbnail">
+            <h3>Videos</h3>
+        </div>
+        <div class="slide" onclick="location.href='#institutions-grid';">
+            <img src="institutions-thumbnail.jpg" alt="Institutions Thumbnail">
+            <h3>Institutions</h3>
+        </div>
+        <div class="slide" onclick="location.href='#books-grid';">
+            <img src="books-thumbnail.jpg" alt="Books Thumbnail">
+            <h3>Books</h3>
+        </div>
+        <div class="slide" onclick="location.href='#learners-support-grid';">
+            <img src="learners-support-thumbnail.jpg" alt="Learners Support Thumbnail">
+            <h3>Learners Support</h3>
+        </div>
+    </div>
+    <div id="video-grid" class="video-grid">
+        <h2>Videos</h2>
+        <div class="video-item">
+            <video controls>
+                <source src="video1.mp4" type="video/mp4">
+                Your browser does not support the video tag.
+            </video>
+            <h3>Video Title</h3>
+            <p>Description goes here.</p>
+            <button>Watch Now</button>
+        </div>
+    </div>
+    <div id="institutions-grid" class="institutions-grid">
+        <h2>Institutions</h2>
+        <div class="institution-item">
+            <img src="institution-logo.jpg" alt="Institution Logo">
+            <h3>Institution Name</h3>
+            <p>Description goes here.</p>
+            <button>Learn More</button>
+        </div>
+    </div>
+    <div id="books-grid" class="books-grid">
+        <h2>Books</h2>
+        <div class="book-item">
+            <img src="book-cover.jpg" alt="Book Cover">
+            <h3>Book Title</h3>
+            <p>Description goes here.</p>
+            <button>Read Now</button>
+        </div>
+    </div>
+    <div id="learners-support-grid" class="learners-support-grid">
+        <h2>Learners Support</h2>
+        <div class="support-item">
+            <img src="support-resource.jpg" alt="Support Resource">
+            <h3>Support Resource</h3>
+            <p>Description goes here.</p>
+            <button>Get Support</button>
+        </div>
+    </div>
+
+          <!-- Mega Footer -->
+  <footer>
+    <h2>Subscribe to Our Newsletter</h2>
+    <div class="footer-subscription">
+      <input type="email" placeholder="Enter your email">
+      <button>Subscribe</button>
+    </div>
+    <div class="footer-social-icons">
+      <a href="#">Facebook</a>
+      <a href="#">Twitter</a>
+      <a href="#">Instagram</a>
+    </div>
+  </footer>
+    
+    <script>
+
+function showMenu() {
+      const menu = document.getElementById('dropdownMenu');
+      menu.style.display = 'block'; // Show the menu
+    }
+
+    function hideMenu() {
+      const menu = document.getElementById('dropdownMenu');
+      menu.style.display = 'none'; // Hide the menu
+    }
+
+             function searchPage() {
+            const searchInput = document.getElementById('search-input').value.toLowerCase();
+            const pageContent = document.body.innerText.toLowerCase();
+            if (pageContent.includes(searchInput)) {
+                alert('Search term found on page!');
+            } else {
+                alert('Search term not found on page!');
+            }
+
+function showMenu() {
+            const menu = document.getElementById('dropdownMenu');
+            menu.style.display = 'block';
+        }
+        
+        function hideMenu() {
+            const menu = document.getElementById('dropdownMenu');
+            menu.style.display = 'none';
+        }
+
+        function showMenu() {
+            const menu = document.getElementById('dropdownMenu');
+            menu.style.display = 'block';
+        }
+        
+        function hideMenu() {
+            const menu = document.getElementById('dropdownMenu');
+            menu.style.display = 'none';
+        }
+        
+
+    </script>
+</body>
+</html>
+
+
+
+   
+ 
+
